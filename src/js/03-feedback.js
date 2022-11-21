@@ -10,7 +10,7 @@ let storage = load(storageKey);
 //об'єкт значень з форми
 let formData = {};
 
-form.addEventListener('input', onInputClick);
+form.addEventListener('input', throttle(onInputClick, 500));
 form.addEventListener('submit', onSubmitClick);
 
 function onInputClick(event) {
@@ -33,23 +33,18 @@ function onSubmitClick(event) {
     return alert('Заповніть всі поля форми');
   }
   //Виводимо в консоль об'єкт
-    console.log({ Email: email.value, Message: message.value });
-    event.currentTarget.reset();
-    remove(storageKey);
-    //збираємо об'єкт
-    // formData = { email: '', message: '' };
-    // storage = formData;
+  console.log({ Email: email.value, Message: message.value });
+  event.currentTarget.reset();
+  remove(storageKey);
 }
 
 function localStorage(data) {
-        if (data) {
-          email.value = data.email;
-          message.value = data.message;
-        }
-
-};
+  if (data) {
+    email.value = data.email;
+    message.value = data.message;
+  }
+}
 localStorage();
-
 
 // Відстежуй на формі подію input, і щоразу записуй у локальне сховище об'єкт з полями email і message,
 //  у яких зберігай поточні значення полів форми.Нехай ключем для сховища буде рядок "feedback-form-state".
