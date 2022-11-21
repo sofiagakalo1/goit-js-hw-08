@@ -3,21 +3,33 @@
 
 import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
-import { save, load, remove } from './storage';
+// import { save, load, remove } from './storage';
 
 const iframe = document.querySelector('#vimeo-player');
 const player = new Player(iframe);
-const storageKey = 'videoplayer-current-time';
-let currentTime = load(storageKey);
-
-//Спрацює у визначений час (Current time за допомогою події timeupdate)
-//Зберігаємо у сховище
+//При натисканні на програвання відео, записуємо у сховище секунду
 const onPlay = function (data) {
-    save(storageKey, data.seconds);
-    return;
-};
+    localStorage.setItem('videoplayer-current-time', data.seconds);
+}
+//при програванні відео оновлюємо час кожні 1000мс
 player.on('timeupdate', throttle(onPlay, 1000));
-player.setCurrentTime(currentTime);
+//якщо з самого початку сховище не містить данних про останню секунду, то встановлюємо час у сховище
+if (localStorage.getItem('videoplayer-current-time') !== null) {
+      player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+}
+
+//VARIANT2
+// const storageKey = 'videoplayer-current-time';
+// let currentTime = load(storageKey);
+
+// //Спрацює у визначений час (Current time за допомогою події timeupdate)
+// //Зберігаємо у сховище
+// const onPlay = function (data) {
+//     save(storageKey, data.seconds);
+//     return;
+// };
+// player.on('timeupdate', throttle(onPlay, 1000));
+// player.setCurrentTime(currentTime);
 
 //Спрацює як тільки почнеться відео
 // player.on('play', function () {

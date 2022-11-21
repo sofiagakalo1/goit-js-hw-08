@@ -33,7 +33,7 @@ function onSubmitForm(event) {
     return alert('Заповніть всі поля форми');
   }
   //Виводимо в консоль об'єкт
-  console.log(localStorage.getItem('feedback-form-state'));
+  console.log({ Email: refs.input.value, Message: refs.textarea.value });
   //очищуємо поля форми
   event.currentTarget.reset();
   localStorage.removeItem('feedback-form-state');
