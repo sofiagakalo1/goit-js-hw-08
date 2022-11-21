@@ -1,6 +1,6 @@
 // HTML містить розмітку форми.Напиши скрипт, який буде зберігати значення полів у локальне сховище, коли користувач щось друкує.
 
-import { throttle } from 'lodash.throttle';
+import throttle from 'lodash.throttle';
 import { save, load, remove } from './storage';
 
 const form = document.querySelector('.feedback-form');
