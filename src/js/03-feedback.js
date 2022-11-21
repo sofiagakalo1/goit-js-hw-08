@@ -15,7 +15,6 @@ form.addEventListener('submit', onSubmitClick);
 
 function onInputClick(event) {
   //отримуємо данні
-  formData = storage;
   formData[event.target.name] = event.target.value;
   //записуємо данні у сховище
   save(storageKey, formData);
