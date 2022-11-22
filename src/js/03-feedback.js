@@ -17,7 +17,7 @@ let formData = {};
 
 function onInputForm(event) {
   //отримуємо данні-об'єкт або має данні зі сховища або є пустим об'єктом
-  formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
+  // formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
   //записуємо данні
   formData.email = refs.input.value;
   formData.message = refs.textarea.value;
