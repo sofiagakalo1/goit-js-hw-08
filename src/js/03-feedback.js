@@ -18,12 +18,14 @@ fromLocalStorage();
 let formData = {};
 
 function onInputForm(event) {
-  //отримуємо данні
-  formData[event.target.name] = event.target.value;
+  //отримуємо данні-об'єкт або має данні зі сховища або є пустим об'єктом
+  formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
+  //записуємо данні
+  formData.email = refs.input.value;
+  formData.message = refs.textarea.value;
   //записуємо данні у сховище
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 }
-
 function onSubmitForm(event) {
   //відміняємо перезагрузку
   event.preventDefault();

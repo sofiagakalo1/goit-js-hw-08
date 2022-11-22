@@ -18,19 +18,6 @@ if (localStorage.getItem('videoplayer-current-time') !== null) {
       player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
 }
 
-//VARIANT2
-// const storageKey = 'videoplayer-current-time';
-// let currentTime = load(storageKey);
-
-// //Спрацює у визначений час (Current time за допомогою події timeupdate)
-// //Зберігаємо у сховище
-// const onPlay = function (data) {
-//     save(storageKey, data.seconds);
-//     return;
-// };
-// player.on('timeupdate', throttle(onPlay, 1000));
-// player.setCurrentTime(currentTime);
-
 //Спрацює як тільки почнеться відео
 // player.on('play', function () {
 //   console.log('played the video!');
@@ -65,13 +52,3 @@ if (localStorage.getItem('videoplayer-current-time') !== null) {
 // Зберігай час відтворення у локальне сховище. Нехай ключем для сховища буде рядок "videoplayer-current-time".
 // Під час перезавантаження сторінки скористайся методом setCurrentTime() з метою відновлення відтворення зі збереженої позиції.
 // Додай до проекту бібліотеку lodash.throttle і зроби так, щоб час відтворення оновлювався у сховищі не частіше, ніж раз на секунду.
-
-// {/* <iframe
-//   id="vimeo-player"
-//   src="https://player.vimeo.com/video/236203659"
-//   width="640"
-//   height="360"
-//   frameborder="0"
-//   allowfullscreen
-//   allow="autoplay; encrypted-media"
-// ></iframe>; */}
